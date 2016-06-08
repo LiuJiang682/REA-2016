@@ -51,26 +51,11 @@ public class CommandFactoryTest {
 	 */
 	@Test
 	public void whenUserEnteredInvalidStringThenACommandObjectShouldReturn() {
-		//Given user entered an emtpy string 
+		//Given user entered an invalid command string 
 		String userEntered = "abc";
 		//When the constructCommand called
 		Command command = CommandFactory.constructCommand(userEntered);
 		//Then the a DoNothing command object should return
-		assertNotNull(command);
-		assertTrue(command instanceof DoNothingCommand);
-	}
-	
-	/**
-	 * Given the application can access the CommandFactory class
-	 * When the getDoNothingCommand method called
-	 * Then a DoNothingCommand object should return
-	 */
-	@Test
-	public void whenGetDoNothingCommandCallThenDoNothingCommandObjectShouldReturn() {
-		//Given the application has access the CommandFactory class
-		//When the getDoNothingCommand method called
-		Command command = CommandFactory.getDoNothingCommand();
-		//Then a DoNothingCommand object should return
 		assertNotNull(command);
 		assertTrue(command instanceof DoNothingCommand);
 	}
@@ -91,18 +76,70 @@ public class CommandFactoryTest {
 		assertTrue(command instanceof PlaceCommand);
 	}
 	
+	
 	/**
-	 * Given the application can access the CommandFactory class
-	 * When the getPlaceCommand method called
-	 * Then a PlaceCommand object should return
+	 * Given the user enter the Move command string
+	 * When the doCommandConstruct method called
+	 * Then the Move command object should return
 	 */
 	@Test
-	public void whenGetPlaceCommandCallThenPlaceCommandObjectShouldReturn() {
-		//Given the application has access the CommandFactory class
-		//When the getDoNothingCommand method called
-		Command command = CommandFactory.getPlaceCommand("place");
-		//Then a DoNothingCommand object should return
+	public void whenMoveCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+		//Given the user enter the MOVE command string
+		String userEntered = "MOVE";
+		//When the doCommandConstruct method called
+		Command command = CommandFactory.constructCommand(userEntered);
+		//Then the MOve command object should return
 		assertNotNull(command);
-		assertTrue(command instanceof PlaceCommand);
+		assertTrue(command instanceof MoveCommand);
 	}
+	
+	/**
+	 * Given the user enter the Left command string
+	 * When the doCommandConstruct method called
+	 * Then the Left command object should return
+	 */
+	@Test
+	public void whenLeftCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+		//Given the user enter the LEFT command string
+		String userEntered = "LEFT";
+		//When the doCommandConstruct method called
+		Command command = CommandFactory.constructCommand(userEntered);
+		//Then the Left command object should return
+		assertNotNull(command);
+		assertTrue(command instanceof LeftCommand);
+	}
+	
+	
+	/**
+	 * Given the user enter the Right command string
+	 * When the doCommandConstruct method called
+	 * Then the Right command object should return
+	 */
+	@Test
+	public void whenRightCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+		//Given the user enter the Right command string
+		String userEntered = "Right";
+		//When the doCommandConstruct method called
+		Command command = CommandFactory.constructCommand(userEntered);
+		//Then the Right command object should return
+		assertNotNull(command);
+		assertTrue(command instanceof RightCommand);
+	}
+	
+	/**
+	 * Given the user enter the Report command string
+	 * When the doCommandConstruct method called
+	 * Then the Report command object should return
+	 */
+	@Test
+	public void whenReportCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+		//Given the user enter the Report command string
+		String userEntered = "Report";
+		//When the doCommandConstruct method called
+		Command command = CommandFactory.constructCommand(userEntered);
+		//Then the Right command object should return
+		assertNotNull(command);
+		assertTrue(command instanceof ReportCommand);
+	}
+	
 }

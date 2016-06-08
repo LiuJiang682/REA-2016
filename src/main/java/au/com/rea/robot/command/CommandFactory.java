@@ -7,20 +7,24 @@ public class CommandFactory {
 		
 		switch (CommandEnum.fromString(userEntered)) {
 			case PLACE:
-				command = getPlaceCommand(userEntered);
+				command = new PlaceCommand(userEntered);
+				break;
+			case MOVE:
+				command = new MoveCommand();
+				break;
+			case LEFT:
+				command = new LeftCommand();
+				break;
+			case RIGHT:
+				command = new RightCommand();
+				break;
+			case REPORT:
+				command = new ReportCommand();
 				break;
 			default:
-				command = getDoNothingCommand();
+				command = new DoNothingCommand();
 		}
 		return command;
-	}
-
-	protected static Command getPlaceCommand(final String userEntered) {
-		return new PlaceCommand(userEntered);
-	}
-
-	protected static Command getDoNothingCommand() {
-		return new DoNothingCommand();
 	}
 
 }
