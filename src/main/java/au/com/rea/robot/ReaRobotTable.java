@@ -5,10 +5,17 @@ import java.util.Scanner;
 
 import au.com.rea.robot.command.Command;
 import au.com.rea.robot.command.CommandFactory;
+import au.com.rea.robot.interf.RobotTable;
+import au.com.rea.robot.model.Robot;
 
-public class ReaRobotTable {
+public class ReaRobotTable implements RobotTable {
 
+	//Dimension Constants 
+	private static final int MAX_X = 5;
+	private static final int MAX_Y = 5;
+	
 	private Scanner scanner;
+	private Robot robot;
 	
 	//Default constructor
 	public ReaRobotTable() {
@@ -40,7 +47,7 @@ public class ReaRobotTable {
 		
 		try {
 			while ((command = getNextCommand(scanner)) != null) {
-				command.execute();
+				command.execute(this);
 			}
 		} finally {
 			scanner.close();
@@ -49,8 +56,26 @@ public class ReaRobotTable {
 		
 	}
 
+	public Robot getRobot() {
+		return robot;
+	}
+
+	public void setRobot(Robot robot) {
+		this.robot = robot;
+	}
+
 	public static void main(String[] args) {
 		
 
+	}
+
+	@Override
+	public int getMaxX() {
+		return MAX_X;
+	}
+
+	@Override
+	public int getMaxY() {
+		return MAX_Y;
 	}
 }

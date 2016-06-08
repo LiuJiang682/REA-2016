@@ -26,6 +26,8 @@ import au.com.rea.robot.command.Command;
 import au.com.rea.robot.command.CommandFactory;
 import au.com.rea.robot.command.DoNothingCommand;
 import au.com.rea.robot.fixture.StringInputFixture;
+import au.com.rea.robot.interf.RobotTable;
+import au.com.rea.robot.model.Robot;
 
 /**
  * In order to use the robot
@@ -159,7 +161,7 @@ public class ReaRobotTableTest {
 		partialMockRobotTable.run();
 		
 		//Then the command should execute
-		verify(mockCommand, times(1)).execute();
+		verify(mockCommand, times(1)).execute(Matchers.any(RobotTable.class));
 	}
 
 	private ReaRobotTable givenPartialMockRobotTable(final String input) throws Exception {
