@@ -18,7 +18,7 @@ import au.com.rea.robot.interf.RobotTable;
 import au.com.rea.robot.model.Robot;
 
 /**
- * Tests for CommandFactory class.
+ * Tests for PlaceCommand class.
  *
  */
 public class PlaceCommandTest {
