@@ -64,11 +64,6 @@ public class ReaRobotTable implements RobotTable {
 		this.robot = robot;
 	}
 
-	public static void main(String[] args) {
-		
-
-	}
-
 	@Override
 	public int getMaxX() {
 		return MAX_X;
@@ -77,5 +72,10 @@ public class ReaRobotTable implements RobotTable {
 	@Override
 	public int getMaxY() {
 		return MAX_Y;
+	}
+	
+	public static void main(String[] args) {
+		ReaRobotTable  table = new ReaRobotTable();
+		table.run();
 	}
 }
