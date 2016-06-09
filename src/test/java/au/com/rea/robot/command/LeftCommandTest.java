@@ -15,7 +15,6 @@ import au.com.rea.robot.ReaRobotTable;
 import au.com.rea.robot.fixture.RobotFixture;
 import au.com.rea.robot.fixture.RobotTableFixture;
 import au.com.rea.robot.interf.RobotTable;
-import au.com.rea.robot.model.ReaRobot;
 import au.com.rea.robot.model.Robot;
 
 @RunWith(PowerMockRunner.class)

@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import au.com.rea.robot.constants.CommonConstants.Numeral;
 import au.com.rea.robot.interf.RobotTable;
+import au.com.rea.robot.model.ReaRobot;
+import au.com.rea.robot.model.Robot;
 
 /**
  * The place command class
@@ -50,8 +52,34 @@ public class PlaceCommand implements Command {
 
 	@Override
 	public void execute(RobotTable robotTable) {
-		// TODO Auto-generated method stub
+		if ((this.validCommand) && (isLegitimateMove(robotTable))) {
+			Robot robot = robotTable.getRobot();
+			if (robot == null) {
+				//First command! Build the robot with parameters
+				robot  = new ReaRobot();
+				robot.setX(x);
+				robot.setY(y);
+				robot.setFacing(facing);
+				robotTable.setRobot(robot);
+			} else {
+				robot.setX(x);
+				robot.setY(y);
+				robot.setFacing(facing);
+			}
+		}
+	}
 
+	/**
+	 * Checking the ranges, the direction will not need to check
+	 * since it is an invalid command.
+	 * @param robotTable the robot table is on
+	 * @return true if it is in range.
+	 */
+	protected boolean isLegitimateMove(RobotTable robotTable) {
+		boolean isInXRange = (Numeral.ZERO <= x) && (x <= robotTable.getMaxX());
+		boolean isInYRange = (Numeral.ZERO <= y) && (y <= robotTable.getMaxY());
+		
+		return isInXRange && isInYRange;
 	}
 
 	public boolean isValidCommand() {
