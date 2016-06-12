@@ -46,6 +46,7 @@ public class LeftCommandTest {
 	 */
 	@Test
 	public void whenRobotIsNullThenNothingChange() {
+		//Given the robot is NOT on the table
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then noting change

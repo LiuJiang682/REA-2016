@@ -17,7 +17,7 @@ public class CommandFactoryTest {
 	 * Then a DoNothingCommand object should return
 	 */
 	@Test
-	public void whenUserEnteredNullThenACommandObjectShouldReturn() {
+	public void whenUserEnteredNullThenADoNothingCommandObjectShouldReturn() {
 		//Given user entered null
 		String userEntered = null;
 		//When the constructCommand called
@@ -33,7 +33,7 @@ public class CommandFactoryTest {
 	 * Then a DoNothingCommand object should return
 	 */
 	@Test
-	public void whenUserEnteredEmptyStringThenACommandObjectShouldReturn() {
+	public void whenUserEnteredEmptyStringThenADoNothingCommandObjectShouldReturn() {
 		//Given user entered an emtpy string 
 		String userEntered = "";
 		//When the constructCommand called
@@ -50,7 +50,7 @@ public class CommandFactoryTest {
 	 * Then a DoNothingCommand object should return
 	 */
 	@Test
-	public void whenUserEnteredInvalidStringThenACommandObjectShouldReturn() {
+	public void whenUserEnteredInvalidStringThenADoNothingCommandObjectShouldReturn() {
 		//Given user entered an invalid command string 
 		String userEntered = "abc";
 		//When the constructCommand called
@@ -83,7 +83,7 @@ public class CommandFactoryTest {
 	 * Then the Move command object should return
 	 */
 	@Test
-	public void whenMoveCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+	public void whenMoveCommandEnteredThenDoCommandConstructShouldReturnMoveommand() {
 		//Given the user enter the MOVE command string
 		String userEntered = "MOVE";
 		//When the doCommandConstruct method called
@@ -99,7 +99,7 @@ public class CommandFactoryTest {
 	 * Then the Left command object should return
 	 */
 	@Test
-	public void whenLeftCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+	public void whenLeftCommandEnteredThenDoCommandConstructShouldReturnLeftCommand() {
 		//Given the user enter the LEFT command string
 		String userEntered = "LEFT";
 		//When the doCommandConstruct method called
@@ -116,7 +116,7 @@ public class CommandFactoryTest {
 	 * Then the Right command object should return
 	 */
 	@Test
-	public void whenRightCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+	public void whenRightCommandEnteredThenDoCommandConstructShouldReturnRightCommand() {
 		//Given the user enter the Right command string
 		String userEntered = "Right";
 		//When the doCommandConstruct method called
@@ -132,7 +132,7 @@ public class CommandFactoryTest {
 	 * Then the Report command object should return
 	 */
 	@Test
-	public void whenReportCommandEnteredThenDoCommandConstructShouldReturnPlaceCommand() {
+	public void whenReportCommandEnteredThenDoCommandConstructShouldReturnReportCommand() {
 		//Given the user enter the Report command string
 		String userEntered = "Report";
 		//When the doCommandConstruct method called

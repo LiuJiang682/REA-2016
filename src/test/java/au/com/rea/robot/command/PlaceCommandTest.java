@@ -167,7 +167,11 @@ public class PlaceCommandTest {
 	public void whenCorrectStringPassedThenPlaceCommandShouldReturn() {
 		//Given the user enter the place string
 		String param = "place 3, 5, north";
-		givenCorrectCommand(param);
+		//When the constructor called
+		PlaceCommand command = givenCorrectCommand(param);
+		//The Place command constructed with valid flag
+		assertNotNull(command);
+		assertTrue(command.isValidCommand());
 	}
 	
 	/**

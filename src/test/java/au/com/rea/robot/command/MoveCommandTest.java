@@ -57,7 +57,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot east facing and robot's X axle is 5
 	 * When the isLegitimateMove method is call
-	 * Then false should return false
+	 * Then false should return
 	 */
 	@Test
 	public void whenEastFacingNXis5ThenReturnFalse() {
@@ -75,7 +75,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot east facing and robot's X axle is 4
 	 * When the isLegitimateMove method is call
-	 * Then false should return true
+	 * Then true should return
 	 */
 	@Test
 	public void whenEastFacingNXis4ThenReturnTrue() {
@@ -93,7 +93,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot north facing and robot's Y axle is 5
 	 * When the isLegitimateMove method is call
-	 * Then false should return false
+	 * Then false should return
 	 */
 	@Test
 	public void whenNorthFacingNYis5ThenReturnFalse() {
@@ -111,7 +111,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot north facing and robot's Y axle is 4
 	 * When the isLegitimateMove method is call
-	 * Then false should return true
+	 * Then true should return
 	 */
 	@Test
 	public void whenNorthFacingNXis4ThenReturnTrue() {
@@ -129,7 +129,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot West facing and robot's X axle is 0
 	 * When the isLegitimateMove method is call
-	 * Then false should return false
+	 * Then false should return
 	 */
 	@Test
 	public void whenWestFacingNXisZeroThenReturnFalse() {
@@ -147,7 +147,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot west facing and robot's X axle is 1
 	 * When the isLegitimateMove method is call
-	 * Then false should return true
+	 * Then true should return
 	 */
 	@Test
 	public void whenWestFacingNXis1ThenReturnTrue() {
@@ -165,7 +165,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot south facing and robot's Y axle is 0
 	 * When the isLegitimateMove method is call
-	 * Then false should return false
+	 * Then false should return
 	 */
 	@Test
 	public void whenSouthFacingNYis0ThenReturnFalse() {
@@ -183,7 +183,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot south facing and robot's Y axle is 1
 	 * When the isLegitimateMove method is call
-	 * Then false should return true
+	 * Then true should return
 	 */
 	@Test
 	public void whenSouthFacingNXis1ThenReturnTrue() {
@@ -298,7 +298,7 @@ public class MoveCommandTest {
 	/**
 	 * Given the robot is on the table and the move is legal
 	 * When the execute method called
-	 * Then the robot is moved
+	 * Then the robot is NOT moved
 	 */
 	@Test
 	public void whenEastFaceNX5ThenNoMove() {
