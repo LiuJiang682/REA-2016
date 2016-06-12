@@ -31,9 +31,7 @@ public class ReportCommandTest {
 		// Given the robot is NOT on the table
 		ReportCommand command = new ReportCommand();
 		RobotTable mockTable = RobotTableFixture.givenMockRobotTable();
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		PrintStream ps = new PrintStream(baos);
-		System.setOut(ps);
+		ByteArrayOutputStream baos = givenOutputStream();
 		// When the execute method is called
 		command.execute(mockTable);
 		// Then nothing happen
@@ -55,14 +53,19 @@ public class ReportCommandTest {
 		robot.setFacing(Directions.NORTH);
 		when(mockTable.getRobot()).thenReturn(robot);
 		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		PrintStream ps = new PrintStream(baos);
-		System.setOut(ps);
+		ByteArrayOutputStream baos = givenOutputStream();
 		// When the execute method is called
 		command.execute(mockTable);
 		// Then nothing happen
 		String content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
 		assertFalse(StringUtils.isBlank(content));
 		assertEquals("1, 2, NORTH\n", content);
+	}
+
+	private ByteArrayOutputStream givenOutputStream() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(baos);
+		System.setOut(ps);
+		return baos;
 	}
 }

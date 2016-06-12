@@ -9,6 +9,8 @@ public class MoveCommand implements Command {
 	@Override
 	public void execute(RobotTable robotTable) {
 		Robot robot = robotTable.getRobot();
+		
+		// only work on robot on table.
 		if (null != robot) {
 			if (isLegitimateMove(robotTable)) {
 				moveRobot(robot);
@@ -67,7 +69,6 @@ public class MoveCommand implements Command {
 		boolean valid = false;
 		Robot robot = robotTable.getRobot();
 
-		// only work on robot on table.
 		switch (robot.getFacing()) {
 		case EAST:
 			if (robot.getX() < robotTable.getMaxX()) {

@@ -27,7 +27,6 @@ import au.com.rea.robot.command.CommandFactory;
 import au.com.rea.robot.command.DoNothingCommand;
 import au.com.rea.robot.fixture.StringInputFixture;
 import au.com.rea.robot.interf.RobotTable;
-import au.com.rea.robot.model.Robot;
 
 /**
  * In order to use the robot
@@ -137,8 +136,6 @@ public class ReaRobotTableTest {
 		//Then the run method should exist with scanner null
 		assertNull(partialMockRobotTable.getScanner());
 		
-		//TODO: look into this later.
-//		verify(partialMockRobotTable, times(1)).getNextCommand(Matchers.eq(mockScanner));
 	}
 
 	

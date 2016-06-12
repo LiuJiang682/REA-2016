@@ -2,6 +2,10 @@ package au.com.rea.robot.command;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The Command Enum class
+ *
+ */
 public enum CommandEnum {
 
 	PLACE, MOVE, LEFT, RIGHT, REPORT, DONOTHING;

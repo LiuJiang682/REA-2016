@@ -1,5 +1,9 @@
 package au.com.rea.robot.command;
 
+/**
+ * The factory class product all command object.
+ *
+ */
 public class CommandFactory {
 
 	public static Command constructCommand(String userEntered) {

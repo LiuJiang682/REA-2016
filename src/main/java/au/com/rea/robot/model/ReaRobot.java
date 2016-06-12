@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import au.com.rea.robot.command.Directions;
 
+/**
+ * This is the implementation class of the Robot. It is a
+ * DTO class with all position attributes of a robot.
+ *
+ */
 public class ReaRobot implements Robot, Serializable {
 
 	/**

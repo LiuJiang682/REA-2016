@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Tests for CommandFactory class.
+ * Tests for CommandEnum class.
  *
  */
 public class CommandEnumTest {

@@ -8,6 +8,19 @@ import au.com.rea.robot.command.CommandFactory;
 import au.com.rea.robot.interf.RobotTable;
 import au.com.rea.robot.model.Robot;
 
+/**
+ * This is the main class for REA robot simulator. It accept user
+ * input command and execute it accordingly. It accept the following
+ * commands:
+ * 
+ * 	PLACE X,Y.F
+ *  MOVE
+ *  LEFT
+ *  RIGHT
+ *  REPORT
+ *  
+ * Any other input will be ignore.
+ */
 public class ReaRobotTable implements RobotTable {
 
 	//Dimension Constants 
@@ -42,6 +55,9 @@ public class ReaRobotTable implements RobotTable {
 		return command;
 	}
 
+	/**
+	 * The method does all the work.
+	 */
 	public void run() {
 		Command command = null;
 		
