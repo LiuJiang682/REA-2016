@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import au.com.rea.robot.command.Command;
 import au.com.rea.robot.command.CommandFactory;
+import au.com.rea.robot.command.DefaultCommandFactory;
 import au.com.rea.robot.interf.RobotTable;
 import au.com.rea.robot.model.Robot;
 
@@ -27,33 +28,34 @@ public class ReaRobotTable implements RobotTable {
 	private static final int MAX_X = 5;
 	private static final int MAX_Y = 5;
 	
-	private Scanner scanner;
 	private Robot robot;
+	private CommandFactory commandFactory;
 	
 	//Default constructor
 	public ReaRobotTable() {
-		this(System.in);
+		this(new DefaultCommandFactory(System.in));
 	}
 	
 	//Real constructor
-	public ReaRobotTable(final InputStream is) {
-		scanner = new Scanner(is);
+	public ReaRobotTable(CommandFactory commandFactory) {
+		this.commandFactory = commandFactory;
 	}
 
-	public Scanner getScanner() {
-		return scanner;
+	public CommandFactory getCommandFactory() {
+		return this.commandFactory;
 	}
+	
 
-	public Command getNextCommand(Scanner scanner) {
-		Command command = null;
-
-		// User interactive mode
-		System.out.println("Please enter your command: ");
-		String userEntered = scanner.nextLine();
-		command = CommandFactory.constructCommand(userEntered);
-
-		return command;
-	}
+//	public Command getNextCommand(Scanner scanner) {
+//		Command command = null;
+//
+//		// User interactive mode
+//		System.out.println("Please enter your command: ");
+//		String userEntered = scanner.nextLine();
+//		command = DefaultCommandFactory.constructCommand(userEntered);
+//
+//		return command;
+//	}
 
 	/**
 	 * The method does all the work.
@@ -61,14 +63,15 @@ public class ReaRobotTable implements RobotTable {
 	public void run() {
 		Command command = null;
 		
-		try {
-			while ((command = getNextCommand(scanner)) != null) {
+//		try {
+			while ((command = commandFactory.getNextCommand()) != null) {
 				command.execute(this);
 			}
-		} finally {
-			scanner.close();
-			this.scanner = null;
-		}
+//		} 
+//		finally {
+//			scanner.close();
+//			this.scanner = null;
+//		}
 		
 	}
 
@@ -94,4 +97,6 @@ public class ReaRobotTable implements RobotTable {
 		ReaRobotTable  table = new ReaRobotTable();
 		table.run();
 	}
+
+	
 }
