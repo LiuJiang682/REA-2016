@@ -1,8 +1,8 @@
 package au.com.rea.robot.command;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayOutputStream;
@@ -36,7 +36,7 @@ public class ReportCommandTest {
 		command.execute(mockTable);
 		// Then nothing happen
 		String content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
-		assertTrue(StringUtils.isBlank(content));
+		assertThat(StringUtils.isBlank(content), is(true));
 	}
 
 	// Given the robot is on the table
@@ -58,8 +58,7 @@ public class ReportCommandTest {
 		command.execute(mockTable);
 		// Then nothing happen
 		String content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
-		assertFalse(StringUtils.isBlank(content));
-		assertEquals("1, 2, NORTH\n", content);
+		assertThat(content, is(equalTo("1, 2, NORTH\n")));
 	}
 
 	private ByteArrayOutputStream givenOutputStream() {

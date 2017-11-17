@@ -30,7 +30,7 @@ public class ReaRobotTable implements RobotTable {
 	
 	//Default constructor
 	public ReaRobotTable() {
-		this(new DefaultCommandFactory(System.in));
+		this(new DefaultCommandFactory());
 	}
 	
 	//Real constructor
@@ -52,6 +52,7 @@ public class ReaRobotTable implements RobotTable {
 			command.execute(this);
 		}
 		
+		commandFactory.closeInput();
 	}
 
 	public Robot getRobot() {

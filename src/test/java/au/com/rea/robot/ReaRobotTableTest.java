@@ -90,6 +90,7 @@ public class ReaRobotTableTest {
 		ArgumentCaptor<RobotTable> tableCaptor = ArgumentCaptor.forClass(RobotTable.class);
 		verify(mockCommand).execute(tableCaptor.capture());
 		assertThat(tableCaptor.getAllValues().size(), is(equalTo(1)));
+		verify(mockDefaultCommandFactory).closeInput();
 	}
 
 	/**

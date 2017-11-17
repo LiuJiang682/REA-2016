@@ -1,7 +1,5 @@
 package au.com.rea.robot.command;
 
-import java.io.InputStream;
-
 import au.com.rea.robot.input.InputInterf;
 import au.com.rea.robot.input.UserInput;
 
@@ -14,11 +12,11 @@ public class DefaultCommandFactory implements CommandFactory {
 	private InputInterf userInput;
 	
 	public DefaultCommandFactory() {
-		this(System.in);
+		this(new UserInput(System.in));
 	}
 	
-	public DefaultCommandFactory(InputStream in) {
-		this.userInput = new UserInput(in);
+	public DefaultCommandFactory(InputInterf in) {
+		this.userInput = in;
 	}
 
 	public Command constructCommand(String userEntered) {
@@ -56,6 +54,11 @@ public class DefaultCommandFactory implements CommandFactory {
 		command = constructCommand(userEntered);
 
 		return command;
+	}
+
+	@Override
+	public void closeInput() {
+		userInput.close();
 	}
 
 }

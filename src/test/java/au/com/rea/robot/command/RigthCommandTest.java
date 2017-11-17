@@ -1,24 +1,21 @@
 package au.com.rea.robot.command;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-import au.com.rea.robot.ReaRobotTable;
 import au.com.rea.robot.fixture.RobotFixture;
 import au.com.rea.robot.fixture.RobotTableFixture;
 import au.com.rea.robot.interf.RobotTable;
 import au.com.rea.robot.model.Robot;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ReaRobotTable.class})
+
 public class RigthCommandTest {
 
 	private RightCommand command;
@@ -49,7 +46,7 @@ public class RigthCommandTest {
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then noting change
-		assertNull(mockRobotTable.getRobot());
+		assertThat(mockRobotTable.getRobot(), is(nullValue()));
 	}
 	
 	/**
@@ -65,7 +62,7 @@ public class RigthCommandTest {
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then facing should be North
-		assertEquals(Directions.SOUTH, robot.getFacing());
+		assertThat(robot.getFacing(), is(equalTo(Directions.SOUTH)));
 	}
 	
 	/**
@@ -81,7 +78,7 @@ public class RigthCommandTest {
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then facing should be West
-		assertEquals(Directions.WEST, robot.getFacing());
+		assertThat(robot.getFacing(), is(equalTo(Directions.WEST)));
 	}
 	
 	/**
@@ -96,8 +93,8 @@ public class RigthCommandTest {
 		when(mockRobotTable.getRobot()).thenReturn(robot);
 		//When the execute method called
 		this.command.execute(mockRobotTable);
-		//Then facing should be Noth
-		assertEquals(Directions.NORTH, robot.getFacing());
+		//Then facing should be North
+		assertThat(robot.getFacing(), is(equalTo(Directions.NORTH)));
 	}
 	
 	/**
@@ -113,6 +110,6 @@ public class RigthCommandTest {
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then facing should be East
-		assertEquals(Directions.EAST, robot.getFacing());
+		assertThat(robot.getFacing(), is(equalTo(Directions.EAST)));
 	}
 }

@@ -1,7 +1,9 @@
 package au.com.rea.robot.input;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.InputStream;
@@ -18,7 +20,7 @@ import au.com.rea.robot.fixture.StringInputFixture;
  */
 public class UserInputTest {
 
-	private UserInput UserInput;
+	private UserInput userInput;
 
 	//Given the user can access to the UserInput class
 	//When the user called the default constructor
@@ -43,23 +45,18 @@ public class UserInputTest {
 		//Given the byte array input stream
 		InputStream in = InputStreamFixture.givenByteArrayInputStream(StringInputFixture.getSingleLineString());
 		//When the constructor called
-		this.UserInput = new UserInput(in);
+		this.userInput = new UserInput(in);
 		//Then the robot table should be accept input
-		Scanner scanner = this.UserInput.getScanner();
-		assertNotNull(scanner);
-		assertEquals(StringInputFixture.TEST_DATA, scanner.nextLine());
+		Scanner scanner = this.userInput.getScanner();
+		assertThat(scanner.nextLine(), is(equalTo(StringInputFixture.TEST_DATA)));
+		
 		try {
 			scanner.nextLine();
 			fail("program reached unexpected point!");
 		}
 		catch (NoSuchElementException e) {
-			accessNoLineFoundException(e);
+			assertThat(e.getMessage(), is(equalTo("No line found")));
 		}
 	}
 	
-	private void accessNoLineFoundException(NoSuchElementException e) {
-		String errorMessage = e.getMessage();
-		assertNotNull(errorMessage);
-		assertEquals("No line found", errorMessage);
-	}
 }

@@ -1,26 +1,21 @@
 package au.com.rea.robot.command;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-import au.com.rea.robot.ReaRobotTable;
 import au.com.rea.robot.fixture.RobotFixture;
 import au.com.rea.robot.fixture.RobotTableFixture;
 import au.com.rea.robot.interf.RobotTable;
 import au.com.rea.robot.model.Robot;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ReaRobotTable.class})
+
 public class MoveCommandTest {
 
 	private MoveCommand command;
@@ -51,7 +46,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		this.command.execute(mockRobotTable);
 		//Then noting change
-		assertNull(mockRobotTable.getRobot());
+		assertThat(mockRobotTable.getRobot(), is(nullValue()));
 	}
 	
 	/**
@@ -69,7 +64,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be false
-		assertFalse(flag);
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -86,8 +81,8 @@ public class MoveCommandTest {
 		when(mockRobotTable.getMaxX()).thenReturn(5);
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be false
-		assertTrue(flag);
+		//Then the flag should be true
+		assertThat(flag, is(true));
 	}
 	
 	/**
@@ -105,7 +100,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be false
-		assertFalse(flag);
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -122,8 +117,8 @@ public class MoveCommandTest {
 		when(mockRobotTable.getMaxY()).thenReturn(5);
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be false
-		assertTrue(flag);
+		//Then the flag should be true
+		assertThat(flag, is(true));
 	}
 	
 	/**
@@ -141,7 +136,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be false
-		assertFalse(flag);
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -158,8 +153,8 @@ public class MoveCommandTest {
 		
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be false
-		assertTrue(flag);
+		//Then the flag should be true
+		assertThat(flag, is(true));
 	}
 	
 	/**
@@ -177,7 +172,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be false
-		assertFalse(flag);
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -195,7 +190,7 @@ public class MoveCommandTest {
 		//When the execute method called
 		boolean flag = this.command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be false
-		assertTrue(flag);
+		assertThat(flag, is(true));
 	}
 	
 	/**
@@ -214,7 +209,7 @@ public class MoveCommandTest {
 		this.command.moveRobot(robot);
 		
 		//Then the X axle should increase by 1.
-		assertTrue(3 == robot.getX());
+		assertThat(robot.getX(), is(equalTo(3)));
 	}
 	
 	/**
@@ -233,7 +228,7 @@ public class MoveCommandTest {
 		this.command.moveRobot(robot);
 		
 		//Then the Y axle should increase by 1.
-		assertTrue(3 == robot.getY());
+		assertThat(robot.getY(), is(equalTo(3)));
 	}
 	
 	/**
@@ -252,7 +247,7 @@ public class MoveCommandTest {
 		this.command.moveRobot(robot);
 		
 		//Then the X axle should decrease by 1.
-		assertTrue(1 == robot.getX());
+		assertThat(robot.getX(), is(equalTo(1)));
 	}
 	
 	/**
@@ -271,7 +266,7 @@ public class MoveCommandTest {
 		this.command.moveRobot(robot);
 		
 		//Then the Y axle should decrease by 1.
-		assertTrue(1 == robot.getY());
+		assertThat(robot.getY(), is(equalTo(1)));
 	}
 	
 	/**
@@ -291,8 +286,8 @@ public class MoveCommandTest {
 		this.command.execute(mockRobotTable);
 		
 		//Then the robot move towards east by one
-		assertTrue(3 == robot.getX());
-		assertEquals(Directions.EAST, robot.getFacing());
+		assertThat(robot.getX(), is(equalTo(3)));
+		assertThat(robot.getFacing(), is(equalTo(Directions.EAST)));
 	}
 	
 	/**
@@ -312,7 +307,7 @@ public class MoveCommandTest {
 		this.command.execute(mockRobotTable);
 		
 		//Then the robot move towards east by one
-		assertTrue(5 == robot.getX());
-		assertEquals(Directions.EAST, robot.getFacing());
+		assertThat(robot.getX(), is(equalTo(5)));
+		assertThat(robot.getFacing(), is(equalTo(Directions.EAST)));
 	}
 }

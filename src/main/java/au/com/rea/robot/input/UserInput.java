@@ -24,4 +24,9 @@ public class UserInput implements InputInterf {
 		return this.scanner;
 	}
 
+	@Override
+	public void close() {
+		scanner.close();
+	}
+
 }

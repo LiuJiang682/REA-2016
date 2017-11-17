@@ -1,9 +1,9 @@
 package au.com.rea.robot.command;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,8 +34,7 @@ public class PlaceCommandTest {
 		String param = "place";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -49,8 +48,7 @@ public class PlaceCommandTest {
 		String param = "place a";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -64,8 +62,7 @@ public class PlaceCommandTest {
 		String param = "place 1";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -79,8 +76,7 @@ public class PlaceCommandTest {
 		String param = "place a,b";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -94,8 +90,7 @@ public class PlaceCommandTest {
 		String param = "place 1,1";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -109,8 +104,7 @@ public class PlaceCommandTest {
 		String param = "place 1,B";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -124,8 +118,7 @@ public class PlaceCommandTest {
 		String param = "place a,b,c";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -139,8 +132,7 @@ public class PlaceCommandTest {
 		String param = "place 1,B,c";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -154,8 +146,7 @@ public class PlaceCommandTest {
 		String param = "place 1,1,c";
 		//When the constructor called
 		PlaceCommand command = new PlaceCommand(param);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(false));
 	}
 	
 	/**
@@ -170,8 +161,7 @@ public class PlaceCommandTest {
 		//When the constructor called
 		PlaceCommand command = givenCorrectCommand(param);
 		//The Place command constructed with valid flag
-		assertNotNull(command);
-		assertTrue(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(true));
 	}
 	
 	/**
@@ -184,8 +174,8 @@ public class PlaceCommandTest {
 		//Given the user enter an incorrect command
 		String commandString = "place 3, 7, abc";
 		PlaceCommand command = new PlaceCommand(commandString);
-		assertNotNull(command);
-		assertFalse(command.isValidCommand());
+		assertThat(command, is(notNullValue()));
+		assertThat(command.isValidCommand(), is(false));
 		RobotTable mockRobotTable = RobotTableFixture.givenMockRobotTable();
 		
 		//When the execute method called
@@ -260,7 +250,7 @@ public class PlaceCommandTest {
 		//When the isLegitimateMove called
 		boolean flag = command.isLegitimateMove(mockRobotTable);
 		//Then the flag should be true
-		assertTrue(flag);
+		assertThat(flag, is(true));
 	}
 
 	/**
@@ -277,8 +267,8 @@ public class PlaceCommandTest {
 		givenCorrectDimesions(mockRobotTable);
 		//When the isLegitimateMove called
 		boolean flag = command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be true
-		assertFalse(flag);
+		//Then the flag should be false
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -295,8 +285,8 @@ public class PlaceCommandTest {
 		givenCorrectDimesions(mockRobotTable);
 		//When the isLegitimateMove called
 		boolean flag = command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be true
-		assertFalse(flag);
+		//Then the flag should be false
+		assertThat(flag, is(false));
 	}
 	
 	/**
@@ -313,14 +303,13 @@ public class PlaceCommandTest {
 		givenCorrectDimesions(mockRobotTable);
 		//When the isLegitimateMove called
 		boolean flag = command.isLegitimateMove(mockRobotTable);
-		//Then the flag should be true
-		assertFalse(flag);
+		//Then the flag should be false
+		assertThat(flag, is(false));
 	}
 	
 	private PlaceCommand givenCorrectCommand(String commandString) {
 		PlaceCommand command = new PlaceCommand(commandString);
-		assertNotNull(command);
-		assertTrue(command.isValidCommand());
+		assertThat(command.isValidCommand(), is(true));
 		return command;
 	}
 	
@@ -330,9 +319,8 @@ public class PlaceCommandTest {
 	}
 	
 	private void assessRobot(Robot capturedRobot) {
-		assertNotNull(capturedRobot);
-		assertTrue(3 == capturedRobot.getX());
-		assertTrue(5 == capturedRobot.getY());
-		assertEquals(Directions.NORTH, capturedRobot.getFacing());
+		assertThat(capturedRobot.getX(), is(equalTo(3)));
+		assertThat(capturedRobot.getY(), is(equalTo(5)));
+		assertThat(capturedRobot.getFacing(), is(equalTo(Directions.NORTH)));
 	}
 }

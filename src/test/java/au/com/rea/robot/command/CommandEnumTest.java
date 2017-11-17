@@ -1,6 +1,8 @@
 package au.com.rea.robot.command;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
@@ -17,19 +19,20 @@ public class CommandEnumTest {
 	 */
 	@Test
 	public void whenStringProvidedThenCommandEnumReturn() {
-		assertEquals(CommandEnum.DONOTHING, CommandEnum.fromString(null));
-		assertEquals(CommandEnum.DONOTHING, CommandEnum.fromString(""));
-		assertEquals(CommandEnum.DONOTHING, CommandEnum.fromString("abc"));
+		assertThat(CommandEnum.fromString(null), is(equalTo(CommandEnum.DONOTHING)));
+		assertThat(CommandEnum.fromString(""), is(equalTo(CommandEnum.DONOTHING)));
+		assertThat(CommandEnum.fromString("abc"), is(equalTo(CommandEnum.DONOTHING)));
 		
-		assertEquals(CommandEnum.MOVE, CommandEnum.fromString("Move"));
-		assertEquals(CommandEnum.LEFT, CommandEnum.fromString("LEFT"));
-		assertEquals(CommandEnum.REPORT, CommandEnum.fromString("Report"));
-		assertEquals(CommandEnum.RIGHT, CommandEnum.fromString("right"));
+		assertThat(CommandEnum.fromString("Move"), is(equalTo(CommandEnum.MOVE)));
+		assertThat(CommandEnum.fromString("LEFT"), is(equalTo(CommandEnum.LEFT)));
+		assertThat(CommandEnum.fromString("Report"), is(equalTo(CommandEnum.REPORT)));
+		assertThat(CommandEnum.fromString("right"), is(equalTo(CommandEnum.RIGHT)));
 	}
 	
 	@Test
 	public void whenPlaceStringEnteredThenPlaceCommandEnumReturn() {
-		assertEquals(CommandEnum.PLACE, CommandEnum.fromString("place"));
-		assertEquals(CommandEnum.PLACE, CommandEnum.fromString("PLACE 0,0,NORTH"));
+		assertThat(CommandEnum.fromString("place"), is(equalTo(CommandEnum.PLACE)));
+		assertThat(CommandEnum.fromString("PLACE 0,0,NORTH"),
+				is(equalTo(CommandEnum.PLACE)));
 	}
 }
