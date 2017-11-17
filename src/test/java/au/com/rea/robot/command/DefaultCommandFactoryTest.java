@@ -48,7 +48,7 @@ public class DefaultCommandFactoryTest {
 	 */
 	@Test
 	public void whenUserEnteredEmptyStringThenADoNothingCommandObjectShouldReturn() {
-		//Given user entered an emtpy string 
+		//Given user entered an empty string 
 		String userEntered = "";
 		//When the constructCommand called
 		Command command = defaultCommandFactory.constructCommand(userEntered);

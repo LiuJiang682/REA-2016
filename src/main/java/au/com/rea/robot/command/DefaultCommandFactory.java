@@ -1,7 +1,9 @@
 package au.com.rea.robot.command;
 
 import java.io.InputStream;
-import java.util.Scanner;
+
+import au.com.rea.robot.input.InputInterf;
+import au.com.rea.robot.input.UserInput;
 
 /**
  * The factory class product all command object.
@@ -9,14 +11,14 @@ import java.util.Scanner;
  */
 public class DefaultCommandFactory implements CommandFactory {
 
-	private Scanner scanner;
+	private InputInterf userInput;
 	
 	public DefaultCommandFactory() {
 		this(System.in);
 	}
 	
 	public DefaultCommandFactory(InputStream in) {
-		this.scanner = new Scanner(in);
+		this.userInput = new UserInput(in);
 	}
 
 	public Command constructCommand(String userEntered) {
@@ -50,7 +52,7 @@ public class DefaultCommandFactory implements CommandFactory {
 
 		// User interactive mode
 		System.out.println("Please enter your command: ");
-		String userEntered = scanner.nextLine();
+		String userEntered = userInput.getNextLine();
 		command = constructCommand(userEntered);
 
 		return command;

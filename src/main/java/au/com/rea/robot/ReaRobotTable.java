@@ -1,8 +1,5 @@
 package au.com.rea.robot;
 
-import java.io.InputStream;
-import java.util.Scanner;
-
 import au.com.rea.robot.command.Command;
 import au.com.rea.robot.command.CommandFactory;
 import au.com.rea.robot.command.DefaultCommandFactory;
@@ -44,18 +41,6 @@ public class ReaRobotTable implements RobotTable {
 	public CommandFactory getCommandFactory() {
 		return this.commandFactory;
 	}
-	
-
-//	public Command getNextCommand(Scanner scanner) {
-//		Command command = null;
-//
-//		// User interactive mode
-//		System.out.println("Please enter your command: ");
-//		String userEntered = scanner.nextLine();
-//		command = DefaultCommandFactory.constructCommand(userEntered);
-//
-//		return command;
-//	}
 
 	/**
 	 * The method does all the work.
@@ -63,15 +48,9 @@ public class ReaRobotTable implements RobotTable {
 	public void run() {
 		Command command = null;
 		
-//		try {
-			while ((command = commandFactory.getNextCommand()) != null) {
-				command.execute(this);
-			}
-//		} 
-//		finally {
-//			scanner.close();
-//			this.scanner = null;
-//		}
+		while ((command = commandFactory.getNextCommand()) != null) {
+			command.execute(this);
+		}
 		
 	}
 

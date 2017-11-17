@@ -3,22 +3,21 @@ package au.com.rea.robot.input;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class CommandInput implements InputInterf {
+public class UserInput implements InputInterf {
 
 	private Scanner scanner;
 	
-	public CommandInput() {
+	public UserInput() {
 		this(System.in);
 	}
 	
-	public CommandInput(InputStream in) {
+	public UserInput(InputStream in) {
 		this.scanner = new Scanner(in);
 	}
 
 	@Override
 	public String getNextLine() {
-		// TODO Auto-generated method stub
-		return null;
+		return scanner.nextLine();
 	}
 
 	public Scanner getScanner() {

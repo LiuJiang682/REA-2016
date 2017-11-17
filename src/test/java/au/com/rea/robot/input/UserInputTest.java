@@ -10,32 +10,31 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import au.com.rea.robot.ReaRobotTable;
 import au.com.rea.robot.fixture.InputStreamFixture;
 import au.com.rea.robot.fixture.StringInputFixture;
 
 /**
- * Test class for CommandInput class
+ * Test class for UserInput class
  */
-public class CommandInputTest {
+public class UserInputTest {
 
-	private CommandInput commadnInput;
+	private UserInput UserInput;
 
-	//Given the user can access to the CommandInput class
+	//Given the user can access to the UserInput class
 	//When the user called the default constructor
 	//Then Scanner object should be exit
 	@Test
 	public void whenDefaultConstructorCalledThenScannerShouldExist() {
-		//Given the user can access the CommandInput class
+		//Given the user can access the UserInput class
 		//When the default constructor called
-		CommandInput input = new CommandInput();
+		UserInput input = new UserInput();
 		//Then the scanner should exist
 		assertNotNull(input);
 		assertNotNull(input.getScanner());
 	}
 	
 	/**
-	 * Given the InputStream to CommandInput
+	 * Given the InputStream to UserInput
 	 * When the user called the real constructor
 	 * Then the Command should be accept input from provided InputStream
 	 */
@@ -44,9 +43,9 @@ public class CommandInputTest {
 		//Given the byte array input stream
 		InputStream in = InputStreamFixture.givenByteArrayInputStream(StringInputFixture.getSingleLineString());
 		//When the constructor called
-		this.commadnInput = new CommandInput(in);
+		this.UserInput = new UserInput(in);
 		//Then the robot table should be accept input
-		Scanner scanner = this.commadnInput.getScanner();
+		Scanner scanner = this.UserInput.getScanner();
 		assertNotNull(scanner);
 		assertEquals(StringInputFixture.TEST_DATA, scanner.nextLine());
 		try {
